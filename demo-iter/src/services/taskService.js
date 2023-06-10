@@ -10,11 +10,9 @@ const TaskService = {
     return axios.get(`${API_BASE_URL}/task/${taskId}`);
   },
   createTask: (taskData) => {
-    console.log(taskData);
     return axios.post(`${API_BASE_URL}/tasks`, taskData);
   },
   updateTask: (taskId, taskData) => {
-    console.log(taskId, taskData);
     return axios.put(`${API_BASE_URL}/tasks/${taskId}`, taskData);
   },
   deleteTask: (taskId) => {

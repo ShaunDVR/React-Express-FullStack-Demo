@@ -8,14 +8,16 @@ const TaskEdit = ({ task, onSubmit }) => {
   const [taskStatus, setTaskStatus] = useState("Task Status here...");
   const formUse = useRef("");
 
-  // Talk about how task is in global scope
+  // useEffect to set initial form values and determine form usage
   useEffect(() => {
     if (task.taskTitle) {
+      // If task details exist, set the form values accordingly
       setTaskTitle(task.taskTitle);
       setTaskPriority(task.taskPriority);
       setTaskStatus(task.taskStatus);
       formUse.current = "update";
     } else {
+      // If task details don't exist, form is for creating a new task
       formUse.current = "create";
     }
   }, [task]);
@@ -23,28 +25,35 @@ const TaskEdit = ({ task, onSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let updatedTask;
+    try {
+      let updatedTask;
 
-    if (!task.taskId) {
-      updatedTask = {
-        taskTitle: taskTitle,
-        taskAdded: new Date(),
-        taskPriority: taskPriority,
-        taskStatus: taskStatus,
-      };
-      await onSubmit(updatedTask);
-    } else {
-      updatedTask = {
-        ...task,
-        taskTitle,
-        taskPriority,
-        taskStatus,
-      };
-      await onSubmit(task.taskId, updatedTask);
+      if (!task.taskId) {
+        // If taskId doesn't exist, it's a new task to be created
+        updatedTask = {
+          taskTitle: taskTitle,
+          taskAdded: new Date(),
+          taskPriority: taskPriority,
+          taskStatus: taskStatus,
+        };
+        await onSubmit(updatedTask);
+      } else {
+        // If taskId exists, it's an existing task to be updated
+        updatedTask = {
+          ...task,
+          taskTitle,
+          taskPriority,
+          taskStatus,
+        };
+        await onSubmit(task.taskId, updatedTask);
+      }
+
+      // Navigate back to the root page
+      window.location.href = "/";
+    } catch (error) {
+      console.error("An error occurred during form submission:", error);
+      // Handle the error or display an error message to the user
     }
-
-    // Navigate back to the root page
-    window.location.href = "/";
   };
 
   return (

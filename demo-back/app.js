@@ -5,12 +5,14 @@ const cors = require("cors");
 const app = express();
 const port = 4000;
 
+// Middleware setup
 app.use(bodyParser.json());
 app.use(cors());
 
+// CORS setup
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:3000", // Replace with the frontend URL
     allowedHeaders: ["Content-Type", "Authorization", "X-Custom-Header"],
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
