@@ -1,0 +1,39 @@
+{
+  "tasks": [
+    {
+      "taskId": 1,
+      "taskTitle": "Prepare presentation slides",
+      "taskAdded": "07/06/2023",
+      "taskPriority": "Medium",
+      "taskStatus": "doing"
+    },
+    {
+      "taskId": 2,
+      "taskTitle": "Write documentation",
+      "taskAdded": "08/06/2023",
+      "taskPriority": "High",
+      "taskStatus": "to do"
+    },
+    {
+      "taskId": 3,
+      "taskTitle": "Test application functionality",
+      "taskAdded": "09/06/2023",
+      "taskPriority": "Low",
+      "taskStatus": "to do"
+    },
+    {
+      "taskId": 4,
+      "taskTitle": "Refactor codebase",
+      "taskAdded": "10/06/2023",
+      "taskPriority": "Medium",
+      "taskStatus": "to do"
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Fix bug in user login module",
+      "taskAdded": "10/06/2023",
+      "taskPriority": "High",
+      "taskStatus": "Done"
+    }
+  ]
+}
